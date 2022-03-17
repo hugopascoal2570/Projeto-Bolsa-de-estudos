@@ -14,6 +14,7 @@
                         <div class="single_prising text-center wow fadeInUp">
                             <div class="prising_header d-flex justify-content-between blue_header">
                                 <h3>{{ $curso->name }}</h3>
+                                <td>{{ $cursos->desconto->bolsas }}</td>
                             </div>
                             <ul>
                                 <li>total de bolsas com desconto: {{ $curso->bolsas }}</li>

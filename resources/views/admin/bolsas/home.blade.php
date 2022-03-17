@@ -22,13 +22,14 @@
         <thead>
             <tr>
                 <th>Nome</th>
-
+                <th>Número de Bolsas</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($courses as $data)
-
+                <td>{{ $data->course->name }}</td>
+                <td>{{ $data->bolsas }}</td>
                 <td>
                     <a href="" class="btn btn-sm btn-info">Editar</a>
                     <form class="d-inline" method="POST" action=""
@@ -41,7 +42,7 @@
                 </tr>
         </tbody>
         @endforeach
-        @endforeach
+
     </table>
     </div>
     </div>

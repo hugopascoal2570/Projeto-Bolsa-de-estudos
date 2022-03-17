@@ -37,29 +37,6 @@
                 </div>
                 <hr>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-from-label">Número de bolsas</label>
-                    <div class="col-sm-2">
-                        <input type="text" name="bolsas" id="bolsas" placeholder="por padrão são 5 bolsas"
-                            class="form-control @error('bolsas') is-invalid @enderror">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-from-label">Início da Promoção</label>
-                    <div class="col-sm-2">
-                        <input type="date" name="inicio" id="inicio"
-                            class="form-control @error('inicio') is-invalid @enderror">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-from-label">Final da Prmoção</label>
-                    <div class="col-sm-2">
-                        <input type="date" name="final" id="final"
-                            class="form-control @error('final') is-invalid @enderror">
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
                     <label class="col-sm-2 col-from-label"></label>
                     <input type="submit" value="cadastrar" class="btn btn-success">
                 </div>

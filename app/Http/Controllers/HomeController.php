@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\ScholarShip;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class HomeController extends Controller
 
     public function contato()
     {
-        $cursos = ScholarShip::paginate(3);
+        $cursos = Course::with('desconto')->get();
+        dd($cursos);
         return view('site.cursos', [
             'cursos' => $cursos
         ]);
