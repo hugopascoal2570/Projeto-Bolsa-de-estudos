@@ -201,7 +201,7 @@
     <script src="{{ asset('/assets/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('/assets/js/mail-script.js') }}"></script>
 
-    <script src="js/main.js"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
 </body>
 
 </html>

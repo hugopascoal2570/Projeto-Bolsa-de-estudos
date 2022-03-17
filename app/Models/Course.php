@@ -11,13 +11,9 @@ class Course extends Model
 
     protected $table = 'courses';
 
-    protected $fillable = ['name', 'bolsas', 'inicio', 'final'];
+    protected $fillable = ['name', 'slug'];
 
     public function desconto()
-    {
-        return $this->hasOne(ScholarShip::class);
-    }
-    public function bolsas()
     {
         return $this->hasOne(ScholarShip::class);
     }

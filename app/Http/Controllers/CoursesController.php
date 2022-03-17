@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBag;
+use Illuminate\Support\Str;
 use App\Http\Requests\StoreCourse;
 use App\Models\Course;
 use App\Models\ScholarShip;
@@ -38,8 +38,10 @@ class CoursesController extends Controller
     {
 
         $data = $request->all('name');
+        $data['slug'] = Str::slug($data['name']);
 
         $data = $this->repository->create($data);
+
 
         $dados = $request->all();
 

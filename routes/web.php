@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ScholarShipController;
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/scholarship', ScholarshipController::class);
 });
 
-
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/cursos', [HomeController::class, 'contato']);
+Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos');
+Route::get('/curso/{slug}', [HomeController::class, 'register']);
+Route::post('/cadastro', [HomeController::class, 'registerAction'])->name('cadastro');
+//Route::post('/etapaDois', [HomeController::class, 'registerTwo'])->name('cadastroTwo');
