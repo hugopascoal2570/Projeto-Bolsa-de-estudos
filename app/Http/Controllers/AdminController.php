@@ -32,7 +32,7 @@ class AdminController extends Controller
     {
         $creds = $request->only('email', 'password');
         if (Auth::attempt($creds)) {
-            return redirect('/admin');
+            return redirect('/painel');
         } else {
             $request->session('error', 'E-mail e/ou senha não conferem');
             return redirect('admin/login');
@@ -60,7 +60,7 @@ class AdminController extends Controller
             $newUser->save();
 
             Auth::login($newUser);
-            return redirect('admin');
+            return redirect('painel');
         } else {
             $request->session('error', 'Já existe um usuário com este e-mail');
             return redirect('admin/register');
@@ -70,6 +70,6 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/admin');
+        return redirect('/painel');
     }
 }

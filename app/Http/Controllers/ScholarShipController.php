@@ -13,6 +13,7 @@ class ScholarShipController extends Controller
     public function __construct(ScholarShip $scholarships)
     {
         $this->repository = $scholarships;
+        $this->middleware(['can:admin']);
     }
     public function index()
     {

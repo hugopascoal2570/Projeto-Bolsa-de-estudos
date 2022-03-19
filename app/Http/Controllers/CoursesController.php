@@ -15,13 +15,14 @@ class CoursesController extends Controller
     public function __construct(Course $curso, ScholarShip $bolsa)
     {
         $this->repository = $curso;
-        $this->middleware('admin');
+        $this->middleware(['can:admin']);
         $this->repositoryTwo = $bolsa;
     }
 
 
     public function index()
     {
+
         $courses = Course::all();
         return view('admin.cursos.home', [
             'courses' => $courses

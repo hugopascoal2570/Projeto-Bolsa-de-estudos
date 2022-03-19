@@ -21,7 +21,7 @@ Route::prefix('/')->group(function () {
     Route::get('/login', [AdminController::class, 'login'])->name('login');
     Route::post('/login', [AdminController::class, 'loginAction']);
     Route::post('/logout', [AdminController::class, 'logout']);
-    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/painel', [AdminController::class, 'index']);
     Route::get('/register', [AdminController::class, 'register']);
     Route::post('/register', [AdminController::class, 'registerAction']);
 
@@ -34,8 +34,12 @@ Route::prefix('/')->group(function () {
     Route::get('/etapaDois', [ResponsibleController::class, 'etapaDois'])->name('etapaDois');
     Route::post('/etapaDois', [ResponsibleController::class, 'etapaDoisAction'])->name('etapaDois');
     //Route::post('/etapaDois', [HomeController::class, 'registerTwo'])->name('cadastroTwo');
+
+    Route::resource('painel/cursos', CoursesController::class);
+    Route::resource('painel/bolsas', ScholarshipController::class);
 });
 
+/*
 Route::prefix('/admin')->group(function () {
     Route::get('/login', [AdminController::class, 'login'])->name('login');
     Route::post('/login', [AdminController::class, 'loginAction']);
@@ -45,6 +49,7 @@ Route::prefix('/admin')->group(function () {
     Route::post('/register', [AdminController::class, 'registerAction']);
 
 
-    Route::resource('/cursos', CoursesController::class);
-    Route::resource('/scholarship', ScholarshipController::class);
+    
+    
 });
+*/

@@ -21,21 +21,6 @@ class HomeController extends Controller
         $this->repository = $usuario;
     }
 
-    public function login(Request $request)
-    {
-        return view('site.login');
-    }
-    public function loginAction(Request $request)
-    {
-        $creds = $request->only('email', 'password');
-        if (Auth::attempt($creds)) {
-            return redirect('/area');
-        } else {
-            $request->session('error', 'E-mail e/ou senha não conferem');
-            return redirect('site/login');
-        }
-    }
-
     public function index()
     {
         $cursos = ScholarShip::paginate(3);

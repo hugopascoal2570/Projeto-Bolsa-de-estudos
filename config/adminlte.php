@@ -238,13 +238,13 @@ return [
 
         [
             'text'        => 'Cursos',
-            'url'         => 'admin/cursos',
+            'url'         => 'painel/cursos',
             'icon'        => 'far fa-fw fa-user',
             'can'         => 'admin'
         ],
         [
             'text'        => 'Bolsa de Estudos',
-            'url'         => 'admin/scholarship',
+            'url'         => 'painel/bolsas',
             'icon'        => 'far fa-fw fa-user',
             'can'         => 'admin'
         ],
