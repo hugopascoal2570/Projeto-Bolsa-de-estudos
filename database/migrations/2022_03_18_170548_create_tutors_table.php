@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tutors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('email')->unique();
             $table->dateTime('birthdate')->default(NOW());
             $table->string('idade')->default('00');
@@ -23,9 +25,6 @@ return new class extends Migration
             $table->string('nacionalidade')->default('Brasileiro');
             $table->string('cpf')->unique()->default('000.000.000-00');
             $table->string('photo')->default('default.png');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tutors');
     }
 };

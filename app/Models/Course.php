@@ -17,4 +17,8 @@ class Course extends Model
     {
         return $this->hasOne(ScholarShip::class);
     }
+    public function cursos()
+    {
+        return $this->belongsToMany(User::class, 'course_users', 'user_id', 'course_id');
+    }
 }

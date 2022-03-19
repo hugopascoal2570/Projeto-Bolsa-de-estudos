@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\ScholarShipController;
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +17,34 @@ use App\Http\Controllers\ScholarShipController;
 |
 */
 
+Route::prefix('/')->group(function () {
+    Route::get('/login', [AdminController::class, 'login'])->name('login');
+    Route::post('/login', [AdminController::class, 'loginAction']);
+    Route::post('/logout', [AdminController::class, 'logout']);
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/register', [AdminController::class, 'register']);
+    Route::post('/register', [AdminController::class, 'registerAction']);
+
+
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos');
+    Route::get('/curso/{slug}', [HomeController::class, 'register']);
+    Route::post('/cadastro', [HomeController::class, 'registerAction'])->name('cadastro');
+    Route::get('/area', [HomeContrroller::class, 'loginAction'])->name('area');
+    Route::get('/etapaDois', [ResponsibleController::class, 'etapaDois'])->name('etapaDois');
+    Route::post('/etapaDois', [ResponsibleController::class, 'etapaDoisAction'])->name('etapaDois');
+    //Route::post('/etapaDois', [HomeController::class, 'registerTwo'])->name('cadastroTwo');
+});
+
 Route::prefix('/admin')->group(function () {
     Route::get('/login', [AdminController::class, 'login'])->name('login');
     Route::post('/login', [AdminController::class, 'loginAction']);
     Route::post('/logout', [AdminController::class, 'logout']);
-    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/register', [AdminController::class, 'register']);
     Route::post('/register', [AdminController::class, 'registerAction']);
+
+
     Route::resource('/cursos', CoursesController::class);
     Route::resource('/scholarship', ScholarshipController::class);
 });
-
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos');
-Route::get('/curso/{slug}', [HomeController::class, 'register']);
-Route::post('/cadastro', [HomeController::class, 'registerAction'])->name('cadastro');
-//Route::post('/etapaDois', [HomeController::class, 'registerTwo'])->name('cadastroTwo');

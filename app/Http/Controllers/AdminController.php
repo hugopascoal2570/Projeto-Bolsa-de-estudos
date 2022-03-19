@@ -52,7 +52,6 @@ class AdminController extends Controller
 
         $hasEmail = User::where('email', $creds['email'])->count();
 
-
         if ($hasEmail === 0) {
             $newUser = new User();
             $newUser->email = $creds['email'];

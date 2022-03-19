@@ -19,8 +19,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'is_admin',
         'email',
         'password',
+        'cpf',
+        'phone',
+        'idade',
+        'birthdate',
+        'nacionalidade',
+        'photo'
     ];
 
     /**
@@ -41,4 +48,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function cursos()
+    {
+        return $this->belongsToMany(User::class, 'course_users', 'user_id', 'course_id');
+    }
+    public function estudantes()
+    {
+        return $this->hasOne(User::class, 'responsible_users');
+    }
 }

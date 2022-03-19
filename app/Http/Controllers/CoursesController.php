@@ -21,7 +21,7 @@ class CoursesController extends Controller
 
     public function index()
     {
-        $courses = Course::paginate(3);
+        $courses = Course::all();
         return view('admin.cursos.home', [
             'courses' => $courses
         ]);
