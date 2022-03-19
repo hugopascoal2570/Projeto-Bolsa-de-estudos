@@ -16,11 +16,7 @@ class ScholarShipController extends Controller
     }
     public function index()
     {
-        $courses = ScholarShip::with('course')->get();
-        //dd($courses);
-        return view('admin.bolsas.home', [
-            'courses' => $courses
-        ]);
+
         //echo "chegou aqui";
     }
 
@@ -31,10 +27,6 @@ class ScholarShipController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
-        return view('admin.bolsas.add', [
-            'courses' => $courses
-        ]);
     }
 
     /**

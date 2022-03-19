@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('scholarships', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('course_id');
+            $table->boolean('active')->default('1');
             $table->foreign('course_id')->references('id')->on('courses');
             $table->integer('bolsas')->default(5);
             $table->dateTime('inicio');

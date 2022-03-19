@@ -240,11 +240,13 @@ return [
             'text'        => 'Cursos',
             'url'         => 'admin/cursos',
             'icon'        => 'far fa-fw fa-user',
+            'can'         => 'admin'
         ],
         [
             'text'        => 'Bolsa de Estudos',
             'url'         => 'admin/scholarship',
             'icon'        => 'far fa-fw fa-user',
+            'can'         => 'admin'
         ],
 
 

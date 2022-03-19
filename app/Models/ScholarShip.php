@@ -17,6 +17,8 @@ class ScholarShip extends Model
     {
         return $this->hasOne(Course::class, 'id', 'course_id');
     }
+
+
     public function bolsas()
     {
         return $this->hasOne(ScholarShip::class);

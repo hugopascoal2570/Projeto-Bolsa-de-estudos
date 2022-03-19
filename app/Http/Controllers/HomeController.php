@@ -47,10 +47,22 @@ class HomeController extends Controller
 
     public function cursos()
     {
-        $cursos = Course::with('desconto')->paginate(1);
-        //dd($cursos);
+        $cursos = Course::with('desconto')->get();
+
+        $dataInv = [];
+        foreach ($cursos as $curso) {
+            $inicial = strtotime(date('Y-m-d H:i:s'));
+            $final = strtotime($curso->desconto->final);
+            if ($final > $inicial) {
+                array_push($dataInv, $curso);
+                //
+            } else {
+                //mudar migration e alterar na tabela
+                ScholarShip::find($curso->id)->update(['active' => 0]);
+            }
+        }
         return view('site.cursos', [
-            'cursos' => $cursos
+            'cursos' => $dataInv
         ]);
     }
 

@@ -16,11 +16,6 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'name' => $this->faker->name,
-            'bolsas' => $this->numberBetween($min = 0, $max = 100),
-            'inicio' => $this->faker->dateTime(),
-            'final' => $this->faker->dateTime(),
-        ];
+        return [];
     }
 }

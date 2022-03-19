@@ -15,6 +15,7 @@ class CoursesController extends Controller
     public function __construct(Course $curso, ScholarShip $bolsa)
     {
         $this->repository = $curso;
+        $this->middleware('admin');
         $this->repositoryTwo = $bolsa;
     }
 
@@ -42,7 +43,6 @@ class CoursesController extends Controller
 
         $data = $this->repository->create($data);
 
-
         $dados = $request->all();
 
         $inicio = strtotime($data['inicio']);
@@ -51,6 +51,9 @@ class CoursesController extends Controller
         if ($inicio > $final) {
             return redirect()->route('scholarships.create');
         } else {
+
+
+            //adicionando bolsas de estudos
 
             $scholarship = new ScholarShip();
             if ($dados['bolsas'] ==  null) {
