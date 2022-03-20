@@ -17,83 +17,19 @@ class ScholarShipController extends Controller
     }
     public function index()
     {
+        $courses = Course::with('desconto')->get();
 
-        //echo "chegou aqui";
+        return view('admin.bolsas.home', [
+            'cursos' => $courses
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function viewScholarship($id)
     {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data = $request->all();
-
-        $inicio = strtotime($data['inicio']);
-        $final = strtotime($data['final']);
-
-        if ($inicio > $final) {
-            return redirect()->route('scholarship.create');
-        }
-
-        $scholarships = $this->repository->create($data);
-
-        return redirect()->route('scholarship.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $data  = Course::with('cursos')->with('responsaveis')->with('desconto')->where('id', $id)->get();
+        dd($data);
+        return view('admin.bolsas.view', [
+            'data' => $data
+        ]);
     }
 }

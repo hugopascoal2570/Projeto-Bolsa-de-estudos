@@ -51,7 +51,7 @@ class ResponsibleController extends Controller
     public function etapaDoisAction(Request $request)
     {
         $data = $request->all();
-        // dd($data);
+        //dd($data);
 
         if ($request->hasFile('photo') && $request->image->isValid()) {
             $imagePath = $request->image->store('fotos', 'public');
@@ -68,6 +68,8 @@ class ResponsibleController extends Controller
             );
         } else {
             $curso = $this->repository->create($data);
+            // dd($curso);
+            $curso->estudantes()->sync($data['user_id']);
 
             return redirect('/');
         }

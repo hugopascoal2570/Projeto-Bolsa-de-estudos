@@ -8,8 +8,7 @@ use App\Models\Nationality;
 use App\Models\ScholarShip;
 use App\Models\User;
 use DateTime;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -34,20 +33,23 @@ class HomeController extends Controller
     {
         $cursos = Course::with('desconto')->get();
 
-        $dataInv = [];
+        $CursoInvalido = [];
         foreach ($cursos as $curso) {
             $inicial = strtotime(date('Y-m-d H:i:s'));
             $final = strtotime($curso->desconto->final);
             if ($final > $inicial) {
-                array_push($dataInv, $curso);
+                array_push($CursoInvalido, $curso);
                 //
             } else {
                 //mudar migration e alterar na tabela
-                ScholarShip::find($curso->id)->update(['active' => 0]);
+
+                DB::table('scholarships')
+                    ->where('id', $curso['id'])
+                    ->update(['active' => 0]);
             }
         }
         return view('site.cursos', [
-            'cursos' => $dataInv
+            'cursos' => $CursoInvalido
         ]);
     }
 

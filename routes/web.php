@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\ScholarShipController;
+use App\Models\ScholarShip;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,10 +35,10 @@ Route::prefix('/')->group(function () {
     Route::get('/area', [HomeContrroller::class, 'loginAction'])->name('area');
     Route::get('/etapaDois', [ResponsibleController::class, 'etapaDois'])->name('etapaDois');
     Route::post('/etapaDois', [ResponsibleController::class, 'etapaDoisAction'])->name('etapaDois');
-    //Route::post('/etapaDois', [HomeController::class, 'registerTwo'])->name('cadastroTwo');
 
     Route::resource('painel/cursos', CoursesController::class);
-    Route::resource('painel/bolsas', ScholarshipController::class);
+    Route::get('painel/bolsas', [ScholarshipController::class, 'index']);
+    Route::get('viewScholarship/{id}', [ScholarShipController::class, 'viewScholarship'])->name('view.scholarship');
 });
 
 /*

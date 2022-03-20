@@ -4,9 +4,9 @@
 @section('content_header')
 
     <h1>Lista de Bolsas de Estudos</h1>
-    <a href="{{ route('scholarship.create') }}" class="btn btn-sm btn-success">Adicionar Bolsa de Estudos</a>
+
     <div class="container">
-        <form action="{{ route('scholarship.index') }}" method="get" class="sidebar-form">
+        <form action="" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Procurar">
                 <span class="input-group-btn">
@@ -21,16 +21,30 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Nome</th>
+                <th>Nome do Curso</th>
                 <th>Número de Bolsas</th>
+                <th>Status</th>
+                <th>Inicio das Matriculas</th>
+                <th>Final das Matriculas</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($courses as $data)
-                <td>{{ $data->course->name }}</td>
-                <td>{{ $data->bolsas }}</td>
+            @foreach ($cursos as $curso)
+                <td>{{ $curso->name }}</td>
+                <td>{{ $curso->desconto->bolsas }}</td>
                 <td>
+                    @if ($curso->desconto->active == 0)
+                        <?php echo 'Curso Encerrado'; ?>
+                    @else
+                        <?php echo 'Curso Ativo'; ?>
+                    @endif
+                <td>{{ $curso->desconto->inicio }}</td>
+                <td>{{ $curso->desconto->final }}</td>
+                </td>
+                <td>
+                    <a href="{{ route('view.scholarship', ['id' => $curso->id]) }}" class="btn btn-sm btn-success">
+                        Vizualizar Curso</a>
                     <a href="" class="btn btn-sm btn-info">Editar</a>
                     <form class="d-inline" method="POST" action=""
                         onsubmit="return confirm('tem certeza que deseja excluir?')">
