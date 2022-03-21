@@ -15,7 +15,7 @@ class CoursesController extends Controller
     public function __construct(Course $curso, ScholarShip $bolsa)
     {
         $this->repository = $curso;
-        $this->middleware(['can:admin']);
+        $this->middleware(['can:admin-secretario']);
         $this->repositoryTwo = $bolsa;
     }
 

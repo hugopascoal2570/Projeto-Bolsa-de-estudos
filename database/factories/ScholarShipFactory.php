@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ScholarShip>
@@ -17,11 +20,11 @@ class ScholarShipFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'course_id' => $this->numberBetween($min = 0, $max = 30),
-            'bolsas' => $this->numberBetween($min = 0, $max = 300),
-            'inicio' => $this->faker->dateTime(),
-            'final' => $this->faker->dateTime(),
+            'course_id' => Course::factory(),
+            'active' => $this->faker->randomDigit,
+            'bolsas' => $this->faker->numerify('##'),
+            'inicio' => $this->faker->dateTime('NOW'),
+            'final' => $this->faker->dateTimeInInterval('-1 day', '+7 days')
         ];
     }
 }

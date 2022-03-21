@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUser extends FormRequest
+class StoreUserCad extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,6 @@ class StoreUser extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:100',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
             'cpf' => 'required|unique:users',
             'phone' => 'required',
             'birthdate' => 'required|date_format:Y-m-d|after_or_equal:1920-01-01',
@@ -42,10 +40,6 @@ class StoreUser extends FormRequest
             'name.required' => 'por favor insira um nome ',
             'name.min' => 'insira pelo menos 3 caracteres',
             'name.max' => 'você só pode inserir 100 caracteres',
-            'email.required' => 'você deve inserir um  email',
-            'email.unique' => 'esse email já está cadastrado em nossa base de dados',
-            'email.email' => 'insira um usuário válido',
-            'password.required' => 'insira uma senha',
             'cpf.required' => 'insira um cpf',
             'cpf.unique' => 'cpf já cadastrado',
             'phone.required' => 'informe um telefone',

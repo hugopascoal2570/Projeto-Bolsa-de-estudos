@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Responsible;
+
 use App\Models\Tutor;
 use DateTime;
 use Illuminate\Http\Request;
@@ -17,32 +17,6 @@ class ResponsibleController extends Controller
         $this->repository = $responsavel;
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-    }
 
     public function etapaDois()
     {
@@ -53,9 +27,9 @@ class ResponsibleController extends Controller
         $data = $request->all();
         //dd($data);
 
-        if ($request->hasFile('photo') && $request->image->isValid()) {
+        if ($request->hasFile('image') && $request->image->isValid()) {
             $imagePath = $request->image->store('fotos', 'public');
-            $data['photo'] = $imagePath;
+            $data['image'] = $imagePath;
         }
 
         $dataNascimento = $data['birthdate'];

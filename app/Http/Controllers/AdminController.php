@@ -28,12 +28,22 @@ class AdminController extends Controller
     }
     public function loginAction(Request $request)
     {
-        $creds = $request->only('email', 'password');
-        if (Auth::attempt($creds)) {
-            return redirect('/painel');
+        $data = $request->only(['email', 'password']);
+        $usuarios = User::where('first_access', 0)->where('email', $data['email'])->count();
+        $dados = User::where('email', $data['email'])->get();
+
+        if ($usuarios  != 0) {
+            return view('/admin.site.formulario', [
+                'dados' => $dados,
+            ]);
         } else {
-            $request->session('error', 'E-mail e/ou senha não conferem');
-            return redirect('admin/login');
+            $creds = $request->only('email', 'password');
+            if (Auth::attempt($creds)) {
+                return redirect('/painel');
+            } else {
+                $request->session('error', 'E-mail e/ou senha não conferem');
+                return redirect('/login');
+            }
         }
     }
     public function register(Request $request)

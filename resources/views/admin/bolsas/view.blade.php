@@ -26,21 +26,31 @@
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Foto</th>
-                <th>Final das Matriculas</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $curso)
-                @foreach ($curso->cursos as $dados)
-                    <td>{{ $dados->name }}</td>
-                    <td>{{ $dados->email }}</td>
-                    <td>{{ $dados->phone }}</td>
-                    <td>{{ $dados->photo }}</td>
+                @foreach ($curso->estudantes as $dados)
+                    @if ($dados->name == '')
+                        <td><?php echo 'Não informado pelo usuário'; ?></td>
+                    @else
+                        <td>{{ $dados->name }}</td>
+                    @endif
+                    @if ($dados->email == '')
+                        <td><?php echo 'não informado pelo usuário'; ?></td>
+                    @else
+                        <td>{{ $dados->email }}</td>
+                    @endif
+
+                    <td><img src="{{ asset("storage/public/{$dados->image}") }}" width="100px"></td>
+
                     </td>
                     <td>
-                        <a href="{{ route('view.scholarship', ['id' => $curso->id]) }}" class="btn btn-sm btn-success">
-                            Vizualizar Curso</a>
+
+                        <a href="{{ route('visualizarResponsaveis', ['id' => $dados->id]) }}"
+                            class="btn btn-sm btn-success">
+                            Vizualizar Responsáveis</a>
                         <a href="" class="btn btn-sm btn-info">Editar</a>
                         <form class="d-inline" method="POST" action=""
                             onsubmit="return confirm('tem certeza que deseja excluir?')">

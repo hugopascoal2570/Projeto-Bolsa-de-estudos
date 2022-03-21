@@ -3,8 +3,8 @@
 
 @section('content_header')
 
-    <h1>Lista de Bolsas de Estudos</h1>
-
+    <h1>Lista de Secretários</h1>
+    <a href="{{ route('secretarios.add') }}" class="btn btn-sm btn-success">Adicionar Curso</a>
     <div class="container">
         <form action="" method="get" class="sidebar-form">
             <div class="input-group">
@@ -21,30 +21,18 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Nome do Curso</th>
-                <th>Número de Bolsas</th>
-                <th>Status</th>
-                <th>Inicio das Matriculas</th>
-                <th>Final das Matriculas</th>
+                <th>Nome do Secretário(a)</th>
+                <th>Email</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($cursos as $curso)
-                <td>{{ $curso->name }}</td>
-                <td>{{ $curso->desconto->bolsas }}</td>
+            @foreach ($secretarios as $dados)
+                <td>{{ $dados->name }}</td>
+                <td>{{ $dados->email }}</td>
+
                 <td>
-                    @if ($curso->desconto->active == 0)
-                        <?php echo 'Curso Encerrado'; ?>
-                    @else
-                        <?php echo 'Curso Ativo'; ?>
-                    @endif
-                <td>{{ $curso->desconto->inicio }}</td>
-                <td>{{ $curso->desconto->final }}</td>
-                </td>
-                <td>
-                    <a href="{{ route('visualizarBolsas', ['id' => $curso->id]) }}" class="btn btn-sm btn-success">
-                        Vizualizar Curso</a>
+
                     <a href="" class="btn btn-sm btn-info">Editar</a>
                     <form class="d-inline" method="POST" action=""
                         onsubmit="return confirm('tem certeza que deseja excluir?')">

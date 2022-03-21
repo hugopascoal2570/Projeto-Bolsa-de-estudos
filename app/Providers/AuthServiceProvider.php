@@ -30,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->is_admin === 1 ? true : false;
         });
 
-        //
+        Gate::define('admin-secretario', function (User $user) {
+            return $user->is_admin === 2 || $user->is_admin === 1 ? true : false;
+        });
     }
 }

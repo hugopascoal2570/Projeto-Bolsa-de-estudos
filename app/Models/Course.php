@@ -17,13 +17,13 @@ class Course extends Model
     {
         return $this->hasOne(ScholarShip::class);
     }
-    public function cursos()
+    public function estudantes()
     {
-        return $this->belongsToMany(User::class, 'course_users', 'course_id', 'user_id');
+        return $this->belongsToMany(User::class, 'course_users');
     }
 
     public function responsaveis()
     {
-        return $this->belongsTo(tutor::class, 'tutors', 'user_id');
+        return $this->belongsTo(tutor::class, 'tutor_users');
     }
 }

@@ -11,7 +11,7 @@ class Tutor extends Model
 
     protected $table = 'tutors';
     protected $fillable = [
-        'name', 'is_admin', 'email', 'cpf', 'phone', 'idade', 'birthdate', 'nacionalidade', 'photo'
+        'name', 'is_admin', 'email', 'cpf', 'phone', 'idade', 'birthdate', 'nacionalidade', 'image'
     ];
 
     public function estudantes()

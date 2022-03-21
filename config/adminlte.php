@@ -240,15 +240,26 @@ return [
             'text'        => 'Cursos',
             'url'         => 'painel/cursos',
             'icon'        => 'far fa-fw fa-user',
-            'can'         => 'admin'
+            'can'         => 'admin-secretario'
         ],
         [
             'text'        => 'Bolsa de Estudos',
             'url'         => 'painel/bolsas',
             'icon'        => 'far fa-fw fa-user',
+            'can'         => 'admin-secretario'
+        ],
+        [
+            'text'        => 'Secretários',
+            'url'         => 'painel/secretarios',
+            'icon'        => 'far fa-fw fa-user',
             'can'         => 'admin'
         ],
-
+        [
+            'text'        => 'Meus Cursos',
+            'url'         => 'painel/meusCursos',
+            'icon'        => 'far fa-fw fa-user',
+            'can'         => 'admin'
+        ],
 
     ],
 

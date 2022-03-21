@@ -19,15 +19,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first_access',
         'is_admin',
         'email',
         'password',
         'cpf',
         'phone',
-        'idade',
         'birthdate',
         'nacionalidade',
-        'photo'
+        'image'
     ];
 
     /**
@@ -57,5 +57,10 @@ class User extends Authenticatable
     public function estudantes()
     {
         return $this->hasOne(User::class, 'responsible_users');
+    }
+
+    public function responsaveis()
+    {
+        return $this->belongsToMany(Tutor::class, 'tutor_users');
     }
 }

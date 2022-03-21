@@ -29,36 +29,34 @@
     </script>
 @endsection
 
-<form action="{{ route('etapaDois') }}" method="POST" id="regForm">
+<form action="{{ route('etapaDois') }}" method="POST" id="regForm" enctype="multipart/form-data">
     @csrf
 
     <h1>Faça o cadastro do seu responsável</h1>
 
     <!-- One "tab" for each step in the form: -->
-    <div class="tab">Email:
-        <p><input type="email" name="email" placeholder="email" oninput="this.className = ''"></p>
-    </div>
 
     <div class="tab">Nome:
-        <p><input type="text" name="name" placeholder="Nome" oninput="this.className = ''"></p>
+        <p><input type="text" name="name" placeholder="Nome" required oninput="this.className = ''"></p>
         <label>Data de Nascimento</label>
         <p><input type="date" name="birthdate" placeholder="00/00/0000" oninput="this.className = ''"></p>
     </div>
 
     <div class="tab">CPF:
-        <p><input type="text" name="cpf" placeholder="000.000.000-00" data-mask="000.000.000-00"
+        <p><input type="text" name="cpf" placeholder="000.000.000-00" required data-mask="000.000.000-00"
                 oninput="this.className = ''"></p>
         <label>Telefone</label>
-        <p><input type="text" name="phone" placeholder="(00) 00000-0000" data-mask="(00) 0000-00000"
+        <p><input type="text" name="phone" placeholder="(00) 00000-0000" required data-mask="(00) 0000-00000"
                 oninput="this.className = ''"></p>
         <label>Nacionalidade</label>
-        <p><input type="text" name="nacionalidade" placeholder="Brasileiro" oninput="this.className = ''"></p>
+        <select id="nacionalidade" name="nacionalidade" required>
+            <option value="Brasileiro(a)">Brasileiro(a)</option>
+            <option value="Estrengeiro(a)">(Estrangeiro)</option>
+
+        </select>
     </div>
 
-    <div class="tab">Foto:
-        <p><input type="file" name="photo" oninput="this.className = ''"></p>
-    </div>
-    <input type="hidden" name="user_id" value="{{ $curso->id }}">
+    <input type="hidden" name="user_id" value="{{ $usuario->id }}">
     <div style="overflow:auto;">
         <div style="float:right;">
             <button type="button" class="btn btn-info float-left" id="prevBtn" class="previus btn btn-info float-left"

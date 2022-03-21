@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ResponsibleController;
 use App\Http\Controllers\ScholarShipController;
-use App\Models\ScholarShip;
+use App\Http\Controllers\SecretariesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,13 +32,24 @@ Route::prefix('/')->group(function () {
     Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos');
     Route::get('/curso/{slug}', [HomeController::class, 'register']);
     Route::post('/cadastro', [HomeController::class, 'registerAction'])->name('cadastro');
+
+    Route::get('/cadastroEtapa2', [HomeController::class, 'etapaDois'])->name('cadastroEtapa2');
+    Route::post('/cadastroEtapa2', [HomeController::class, 'EtapaDoisAction'])->name('cadastroEtapa2');
+
+
     Route::get('/area', [HomeContrroller::class, 'loginAction'])->name('area');
+    //responsaveis
+
     Route::get('/etapaDois', [ResponsibleController::class, 'etapaDois'])->name('etapaDois');
     Route::post('/etapaDois', [ResponsibleController::class, 'etapaDoisAction'])->name('etapaDois');
 
     Route::resource('painel/cursos', CoursesController::class);
     Route::get('painel/bolsas', [ScholarshipController::class, 'index']);
-    Route::get('viewScholarship/{id}', [ScholarShipController::class, 'viewScholarship'])->name('view.scholarship');
+    Route::get('painel/secretarios', [SecretariesController::class, 'index']);
+    Route::get('secretarios', [SecretariesController::class, 'add'])->name('secretarios.add');
+    Route::post('adicionarSecretarios', [SecretariesController::class, 'addAction'])->name('secretatios.addAction');
+    Route::get('visualizarBolsas/{id}', [ScholarShipController::class, 'viewScholarship'])->name('visualizarBolsas');
+    Route::get('visualizarResponsaveis/{id}', [ScholarShipController::class, 'viewResponsible'])->name('visualizarResponsaveis');
 });
 
 /*
