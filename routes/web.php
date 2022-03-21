@@ -30,19 +30,18 @@ Route::prefix('/')->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/cursos', [HomeController::class, 'cursos'])->name('cursos');
-    Route::get('/curso/{slug}', [HomeController::class, 'register']);
+    Route::get('/curso/{id}', [HomeController::class, 'register']);
     Route::post('/cadastro', [HomeController::class, 'registerAction'])->name('cadastro');
-
     Route::get('/cadastroEtapa2', [HomeController::class, 'etapaDois'])->name('cadastroEtapa2');
     Route::post('/cadastroEtapa2', [HomeController::class, 'EtapaDoisAction'])->name('cadastroEtapa2');
 
 
     Route::get('/area', [HomeContrroller::class, 'loginAction'])->name('area');
     //responsaveis
-
     Route::get('/etapaDois', [ResponsibleController::class, 'etapaDois'])->name('etapaDois');
     Route::post('/etapaDois', [ResponsibleController::class, 'etapaDoisAction'])->name('etapaDois');
 
+    //painel
     Route::resource('painel/cursos', CoursesController::class);
     Route::get('painel/bolsas', [ScholarshipController::class, 'index']);
     Route::get('painel/secretarios', [SecretariesController::class, 'index']);

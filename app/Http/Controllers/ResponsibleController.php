@@ -45,8 +45,8 @@ class ResponsibleController extends Controller
             // dd($curso);
             $curso->estudantes()->sync($data['user_id']);
 
-            return redirect('/');
+            return redirect('/painel');
         }
-        return redirect('/');
+        return redirect('/painel');
     }
 }

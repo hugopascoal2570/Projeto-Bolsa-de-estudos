@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,12 @@ class AdminController extends Controller
     }
     public function index()
     {
+        $cursos = Course::with('desconto')->get();
+
+        // dd($cursos);
+        return view('admin.home', [
+            'cursos' => $cursos
+        ]);
         return view('admin.home');
     }
 
@@ -29,14 +36,13 @@ class AdminController extends Controller
     public function loginAction(Request $request)
     {
         $data = $request->only(['email', 'password']);
+
         $usuarios = User::where('first_access', 0)->where('email', $data['email'])->count();
+
         $dados = User::where('email', $data['email'])->get();
 
-        if ($usuarios  != 0) {
-            return view('/admin.site.formulario', [
-                'dados' => $dados,
-            ]);
-        } else {
+
+        if ($usuarios  === 0) {
             $creds = $request->only('email', 'password');
             if (Auth::attempt($creds)) {
                 return redirect('/painel');
@@ -44,6 +50,10 @@ class AdminController extends Controller
                 $request->session('error', 'E-mail e/ou senha não conferem');
                 return redirect('/login');
             }
+        } else {
+            return view('/admin.site.formulario', [
+                'dados' => $dados,
+            ]);
         }
     }
     public function register(Request $request)
@@ -68,7 +78,7 @@ class AdminController extends Controller
             $newUser->save();
 
             Auth::login($newUser);
-            return redirect('painel');
+            return redirect('/painel');
         } else {
             $request->session('error', 'Já existe um usuário com este e-mail');
             return redirect('admin/register');

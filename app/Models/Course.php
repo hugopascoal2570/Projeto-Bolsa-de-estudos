@@ -26,4 +26,9 @@ class Course extends Model
     {
         return $this->belongsTo(tutor::class, 'tutor_users');
     }
+
+    public function cursos()
+    {
+        return $this->belongsToMany(User::class, 'course_users', 'course_id', 'user_id');
+    }
 }

@@ -35,9 +35,17 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="img/logo.png" alt="">
-                                </a>
+                                <div class="col-xl-6 col-lg-7">
+                                    <div class="main-menu  d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a class="active" href="{{ url('/login') }}">Login</a>
+                                                </li>
+
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-7">
@@ -52,7 +60,10 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                            <div class="mobile_menu d-block d-lg-none">
+
+                            </div>
+
                         </div>
                     </div>
 

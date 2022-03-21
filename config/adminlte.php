@@ -255,10 +255,10 @@ return [
             'can'         => 'admin'
         ],
         [
-            'text'        => 'Meus Cursos',
+            'text'        => 'Cursos',
             'url'         => 'painel/meusCursos',
             'icon'        => 'far fa-fw fa-user',
-            'can'         => 'admin'
+            'can'         => 'usuario'
         ],
 
     ],

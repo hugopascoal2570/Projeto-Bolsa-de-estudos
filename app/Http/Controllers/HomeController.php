@@ -10,6 +10,7 @@ use App\Models\Nationality;
 use App\Models\ScholarShip;
 use App\Models\User;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -42,9 +43,7 @@ class HomeController extends Controller
             $final = strtotime($curso->desconto->final);
             if ($final > $inicial) {
                 array_push($CursoInvalido, $curso);
-                //
             } else {
-                //mudar migration e alterar na tabela
 
                 DB::table('scholarships')
                     ->where('id', $curso['id'])
@@ -56,27 +55,26 @@ class HomeController extends Controller
         ]);
     }
 
-    public function register($slug)
+    public function register($id)
     {
+        $curso = Auth::user();
 
-        $curso = Course::where('slug', $slug)->first();
-        $nacionality = Nationality::all();
-        return view('site.adicionar', [
-            'curso' => $curso,
-            'nacionality' => $nacionality
-        ]);
+        $cursos = Course::where('id', $id)->first();
+
+        $curso_id = $curso['id'];
+
+        $cursos->cursos()->sync($curso_id);
+        return redirect('/painel');
     }
 
     public function registerAction(StoreHome $request)
     {
 
         $data = $request->all();
-
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $curso = $this->repository->create($data);
-        $curso->cursos()->sync($data['curso_id']);
 
-
-        return redirect('/');
+        return redirect('/painel');
     }
 
     public function cadastroEtapa2()
@@ -87,7 +85,9 @@ class HomeController extends Controller
 
     public function EtapaDoisAction(Request $request)
     {
+
         $data = $request->all();
+
         if (!$usuario = $this->repository->find($data['id'])) {
         }
         if ($request->hasFile('image') && $request->image->isValid()) {
@@ -101,7 +101,6 @@ class HomeController extends Controller
         $dataNascimento = $data['birthdate'];
         $date = new DateTime($dataNascimento);
         $interval = $date->diff(new DateTime(date('Y-m-d')));
-
 
         if ($interval->format('%Y') < 18) {
             $usuario->update($data);

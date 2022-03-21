@@ -38,8 +38,8 @@
             <label>Data de Nascimento</label>
             <p><input type="date" name="birthdate" oninput="this.className = ''"></p>
         </div>
-        @foreach ($dados as $usuario)
-            <input type="hidden" name="id" value="{{ $usuario->id }}">
+        @foreach ($dados as $dado)
+            <input type="hidden" name="id" value="{{ $dado->id }}">
         @endforeach
 
         <div class="tab">CPF:
