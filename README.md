@@ -23,6 +23,7 @@ https://github.com/jeroennoten/Laravel-AdminLTE
 
 https://github.com/igorescobar/jQuery-Mask-Plugin
 
+<<<<<<< Updated upstream
 ## Iniciando o projeto
 
 basta apenas criar uma base de dados configurar o .env
@@ -33,6 +34,8 @@ php artisan migrate
 
 php artisan serve e começar a usar o projeto
 
+=======
+>>>>>>> Stashed changes
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
