@@ -1,6 +1,3 @@
-
-
-
 <?php $__env->startSection('title', 'titulo de teste'); ?>
 
 <?php $__env->startSection('content'); ?>

@@ -1,7 +1,3 @@
-
-
-
-
 <?php $__env->startSection('title', 'Informe seus dados'); ?>
 <?php $__env->startSection('script'); ?>
     <script>
