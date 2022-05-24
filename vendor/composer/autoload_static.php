@@ -540,6 +540,7 @@ class ComposerStaticInitf9779bc214d1d9b952392dcdb5286777
         'App\\Models\\ScholarShip' => __DIR__ . '/../..' . '/app/Models/ScholarShip.php',
         'App\\Models\\Tutor' => __DIR__ . '/../..' . '/app/Models/Tutor.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\create_draw_users_table' => __DIR__ . '/../..' . '/app/Models/create_draw_users_table.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

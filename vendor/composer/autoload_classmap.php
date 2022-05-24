@@ -34,6 +34,7 @@ return array(
     'App\\Models\\ScholarShip' => $baseDir . '/app/Models/ScholarShip.php',
     'App\\Models\\Tutor' => $baseDir . '/app/Models/Tutor.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\create_draw_users_table' => $baseDir . '/app/Models/create_draw_users_table.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

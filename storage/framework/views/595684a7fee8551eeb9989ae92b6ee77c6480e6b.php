@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Cursos'); ?>
 <?php $__env->startSection('content'); ?>
     <?php $__currentLoopData = $cursos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $curso): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -19,7 +21,7 @@
                                     <?php echo e(\Carbon\Carbon::parse($curso->final)->format('d/m/Y')); ?></li>
                             </ul>
                             <div class="prising_bottom">
-                                <a href="<?php echo e(url('/curso', ['slug' => $curso->slug])); ?>" class="get_now prising_btn">Essa
+                                <a href="<?php echo e(url('/curso', ['id' => $curso->id])); ?>" class="get_now prising_btn">Essa
                                     Bolsa é minha!</a>
                             </div>
                         </div>

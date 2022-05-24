@@ -57,14 +57,6 @@ class HomeController extends Controller
 
     public function register($id)
     {
-        $curso = Auth::user();
-
-        $cursos = Course::where('id', $id)->first();
-
-        $curso_id = $curso['id'];
-
-        $cursos->cursos()->sync($curso_id);
-        return redirect('/painel');
     }
 
     public function registerAction(StoreHome $request)

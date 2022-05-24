@@ -21,7 +21,7 @@
                                     {{ \Carbon\Carbon::parse($curso->final)->format('d/m/Y') }}</li>
                             </ul>
                             <div class="prising_bottom">
-                                <a href="{{ url('/curso', ['slug' => $curso->slug]) }}" class="get_now prising_btn">Essa
+                                <a href="{{ url('/curso', ['id' => $curso->id]) }}" class="get_now prising_btn">Essa
                                     Bolsa é minha!</a>
                             </div>
                         </div>
